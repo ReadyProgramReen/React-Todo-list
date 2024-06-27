@@ -7,6 +7,7 @@ const Todo = () => {
     const inputRef = useRef();
     const [todoList,setTodoList]=useState([])
 
+    // Add function
     const add =()=>{
         const inputText = inputRef.current.value.trim();
 
@@ -21,6 +22,15 @@ const Todo = () => {
         setTodoList((prev)=>[...prev,newTodo]);
         inputRef.current.value = "";
     }
+
+    // delete function
+    const deleteTodo = (id)=>{
+        setTodoList((prvTodo)=>{
+            return prvTodo.filter((todo)=>todo.id !== id)
+        })
+    }
+
+
   return (
     <div className='bg-white place-self-center w-11/12 max-w-md flex 
     flex-col p-7 min-h-[550px] rounded-xl'>
@@ -41,7 +51,7 @@ const Todo = () => {
     <div>
      {todoList.map((item, index)=>{
         return <TodoItems key ={index} text ={item.text}
-        id= {item.id} isComplete={item.isComplete}/>
+        id= {item.id} isComplete={item.isComplete} deleteTodo={deleteTodo}/>
      })}
        
 

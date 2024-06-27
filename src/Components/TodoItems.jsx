@@ -5,7 +5,7 @@ import delete_icon from '../assets/delete.png'
 
 
 
-const TodoItems = ({text, id, isComplete}) => {
+const TodoItems = ({text, id, isComplete, deleteTodo}) => {
   return (
     <div className='flex items-center my-3 gap-2'>
     
@@ -16,7 +16,7 @@ const TodoItems = ({text, id, isComplete}) => {
         </div>
 
     {/* Delete icon */}
-    <img className='w-3.5 cursor-pointer' src={delete_icon} alt="" />
+    <img onClick={()=>{deleteTodo(id)}} className='w-3.5 cursor-pointer' src={delete_icon} alt="" />
 
     </div>
   )
